@@ -22,7 +22,6 @@ class SignIn extends React.Component {
 		const { email, password } = this.state;
 		try {
 			await auth.signInWithEmailAndPassword( email, password);
-console.log("test with ", email, password);
 			this.setState({ email: '', password: '' });
 		}
 		catch (err) {
@@ -48,7 +47,7 @@ console.log("test with ", email, password);
 					<FormInput name="password" value={this.state.password} type="password" label="Password" required handleChange={this.handleChange} />
 					<div className="buttons">
 						<CustomButton type="submit"> Sign In </CustomButton>
-						<CustomButton onClick={signInWithGoogle} isGoogleSignIn> Sign In with Google </CustomButton>
+						<CustomButton type="button" onClick={signInWithGoogle} isGoogleSignIn> Sign In with Google </CustomButton>
 					</div>
 				</form>
 			</div>
