@@ -4,6 +4,7 @@ import './sign-in.styes.scss';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 import { signInWithGoogle } from '../../firebase/firebase.utils';
+import { auth } from '../../firebase/firebase.utils.js';
 
 
 class SignIn extends React.Component {
@@ -16,9 +17,17 @@ class SignIn extends React.Component {
 	}
 
 
-	handleSubmit = event => {
+	handleSubmit = async event => {
 		event.preventDefault();
-		this.setState({ email: '', password: '' });
+		const { email, password } = this.state;
+		try {
+			await auth.signInWithEmailAndPassword( email, password);
+console.log("test with ", email, password);
+			this.setState({ email: '', password: '' });
+		}
+		catch (err) {
+			console.log( "ERROR signing in", err.message);
+		}
 	}
 
 
