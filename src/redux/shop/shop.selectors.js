@@ -34,3 +34,8 @@ export const selectCollection = memoize((collectionUrlParam) =>
 	)
 );
 
+
+export const selectIsComponentFetching = createSelector(
+	[selectShop],
+	shop => shop.isFetching
+)
