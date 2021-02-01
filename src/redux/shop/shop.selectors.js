@@ -39,3 +39,8 @@ export const selectIsComponentFetching = createSelector(
 	[selectShop],
 	shop => shop.isFetching
 )
+
+export const selectIsComponentLoaded = createSelector(
+	[selectShop],
+	shop => !!shop.collections
+)
